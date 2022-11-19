@@ -1,4 +1,9 @@
+import 'dart:developer';
+
+import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_image_search/presentation/images_screen/simple_controller.dart';
 
 class ImagesScreen extends StatefulWidget {
   const ImagesScreen({super.key});
@@ -18,9 +23,24 @@ class _ImagesScreenState extends State<ImagesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(SimpleController());
     return Scaffold(
       appBar: AppBar(
         title: const Text("이미지서치 with GetX"),
+      ),
+      floatingActionButton: GetBuilder<SimpleController>(
+        builder: (controller) {
+          return AnimSearchBar(
+            width: MediaQuery.of(context).size.width - 40,
+            textController: searchController,
+            suffixIcon: const Icon(Icons.search),
+            rtl: true,
+            onSuffixTap: () {
+              controller.search.value = searchController.text;
+              log(controller.search.value);
+            },
+          );
+        },
       ),
       body: Column(
         children: [
