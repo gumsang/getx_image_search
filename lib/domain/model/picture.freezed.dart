@@ -20,8 +20,10 @@ Picture _$PictureFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Picture {
+  @JsonKey(name: 'previewUrl')
   String get url => throw _privateConstructorUsedError;
-  String get tag => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tags')
+  String get tags => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +35,9 @@ abstract class $PictureCopyWith<$Res> {
   factory $PictureCopyWith(Picture value, $Res Function(Picture) then) =
       _$PictureCopyWithImpl<$Res, Picture>;
   @useResult
-  $Res call({String url, String tag});
+  $Res call(
+      {@JsonKey(name: 'previewUrl') String url,
+      @JsonKey(name: 'tags') String tags});
 }
 
 /// @nodoc
@@ -50,16 +54,16 @@ class _$PictureCopyWithImpl<$Res, $Val extends Picture>
   @override
   $Res call({
     Object? url = null,
-    Object? tag = null,
+    Object? tags = null,
   }) {
     return _then(_value.copyWith(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      tag: null == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
+      tags: null == tags
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -72,7 +76,9 @@ abstract class _$$_PictureCopyWith<$Res> implements $PictureCopyWith<$Res> {
       __$$_PictureCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String url, String tag});
+  $Res call(
+      {@JsonKey(name: 'previewUrl') String url,
+      @JsonKey(name: 'tags') String tags});
 }
 
 /// @nodoc
@@ -86,16 +92,16 @@ class __$$_PictureCopyWithImpl<$Res>
   @override
   $Res call({
     Object? url = null,
-    Object? tag = null,
+    Object? tags = null,
   }) {
     return _then(_$_Picture(
       url: null == url
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
               as String,
-      tag: null == tag
-          ? _value.tag
-          : tag // ignore: cast_nullable_to_non_nullable
+      tags: null == tags
+          ? _value.tags
+          : tags // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -104,19 +110,23 @@ class __$$_PictureCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Picture implements _Picture {
-  const _$_Picture({required this.url, required this.tag});
+  const _$_Picture(
+      {@JsonKey(name: 'previewUrl') required this.url,
+      @JsonKey(name: 'tags') required this.tags});
 
   factory _$_Picture.fromJson(Map<String, dynamic> json) =>
       _$$_PictureFromJson(json);
 
   @override
+  @JsonKey(name: 'previewUrl')
   final String url;
   @override
-  final String tag;
+  @JsonKey(name: 'tags')
+  final String tags;
 
   @override
   String toString() {
-    return 'Picture(url: $url, tag: $tag)';
+    return 'Picture(url: $url, tags: $tags)';
   }
 
   @override
@@ -125,12 +135,12 @@ class _$_Picture implements _Picture {
         (other.runtimeType == runtimeType &&
             other is _$_Picture &&
             (identical(other.url, url) || other.url == url) &&
-            (identical(other.tag, tag) || other.tag == tag));
+            (identical(other.tags, tags) || other.tags == tags));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, url, tag);
+  int get hashCode => Object.hash(runtimeType, url, tags);
 
   @JsonKey(ignore: true)
   @override
@@ -148,14 +158,17 @@ class _$_Picture implements _Picture {
 
 abstract class _Picture implements Picture {
   const factory _Picture(
-      {required final String url, required final String tag}) = _$_Picture;
+      {@JsonKey(name: 'previewUrl') required final String url,
+      @JsonKey(name: 'tags') required final String tags}) = _$_Picture;
 
   factory _Picture.fromJson(Map<String, dynamic> json) = _$_Picture.fromJson;
 
   @override
+  @JsonKey(name: 'previewUrl')
   String get url;
   @override
-  String get tag;
+  @JsonKey(name: 'tags')
+  String get tags;
   @override
   @JsonKey(ignore: true)
   _$$_PictureCopyWith<_$_Picture> get copyWith =>

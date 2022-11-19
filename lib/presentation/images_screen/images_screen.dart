@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -37,57 +35,55 @@ class _ImagesScreenState extends State<ImagesScreen> {
             rtl: true,
             onSuffixTap: () {
               controller.search.value = searchController.text;
-              log(controller.search.value);
             },
           );
         },
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 150,
-                    childAspectRatio: 2 / 3,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20),
-                itemCount: 10,
-                itemBuilder: (BuildContext ctx, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      // final movie = viewModel.state.movies[index];
-                      // Navigator.push(
-                      //   context,
-                      //   PageRouteBuilder(
-                      //     transitionDuration:
-                      //         const Duration(milliseconds: 1),
-                      //     pageBuilder: (_, __, ___) =>
-                      //         MovieDetailScreen(movie),
-                      //   ),
-                      // );
+      body: GetBuilder<SimpleController>(
+        builder: (controller) {
+          return Column(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 130,
+                            childAspectRatio: 2 / 3.5,
+                            crossAxisSpacing: 20,
+                            mainAxisSpacing: 20),
+                    itemCount: controller.pictureList.length,
+                    itemBuilder: (BuildContext ctx, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          // TODO : Detail 화면으로 이동
+                          // final picture = controller.pictureList[index];
+                        },
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.network(
+                                controller.pictureList[index].url,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Text(
+                              controller.pictureList[index].tags,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                            ),
+                          ],
+                        ),
+                      );
                     },
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: Image.network(
-                              "http://t1.daumcdn.net/friends/prod/editor/dc8b3d02-a15a-4afa-a88b-989cf2a50476.jpg"),
-                        ),
-                        const Text(
-                          "헬로",
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  );
-                },
+                  ),
+                ),
               ),
-            ),
-          ),
-        ],
+            ],
+          );
+        },
       ),
     );
   }

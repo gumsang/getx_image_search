@@ -7,12 +7,12 @@ part of 'picture.dart';
 // **************************************************************************
 
 _$_Picture _$$_PictureFromJson(Map<String, dynamic> json) => _$_Picture(
-      url: json['url'] as String,
-      tag: json['tag'] as String,
+      url: json['previewURL'] as String,
+      tags: json['tags'] as String,
     );
 
 Map<String, dynamic> _$$_PictureToJson(_$_Picture instance) =>
     <String, dynamic>{
-      'url': instance.url,
-      'tag': instance.tag,
+      'previewUrl': instance.url,
+      'tags': instance.tags,
     };

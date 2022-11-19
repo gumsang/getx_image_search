@@ -6,8 +6,8 @@ part 'picture.g.dart';
 @freezed
 class Picture with _$Picture {
   const factory Picture({
-    required String url,
-    required String tag,
+    @JsonKey(name: 'previewUrl') required String url,
+    @JsonKey(name: 'tags') required String tags,
   }) = _Picture;
 
   factory Picture.fromJson(Map<String, Object?> json) =>
