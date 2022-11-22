@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:getx_image_search/presentation/images_screen/images_screen.dart';
+import 'package:getx_image_search/presentation/images_screen/images_view_model.dart';
 
 void main() {
+  Get.put(ImagesViewModel());
+
   runApp(const MyApp());
 }
 
